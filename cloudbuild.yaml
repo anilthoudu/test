@@ -17,10 +17,8 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod:$BUILD_ID', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod']
-  branches: ['master']
 #scm build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm:$BUILD_ID', '.']
 - name: 'gcr.io/cloud-builders/docker’
   args: ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm']
-  branches: ['scm-staging']
