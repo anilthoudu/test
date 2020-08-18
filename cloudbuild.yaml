@@ -9,7 +9,7 @@ steps:
 #scm build
 - name: 'ubuntu'
   env:
-  - 'BRANCH=$BRANCH_NAME
+  - 'BRANCH=$BRANCH_NAME'
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
