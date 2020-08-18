@@ -1,19 +1,23 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
     [[ "$BRANCH_NAME" == "master" ]]
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}/prod:$BUILD_ID', '.']
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}/prod']
 
 #scm build
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
     [[ "$BRANCH_NAME" == "scm-staging" ]]
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm:$BUILD_ID', '.']
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm']
