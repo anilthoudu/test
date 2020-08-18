@@ -14,4 +14,4 @@ steps:
   - 'BRANCH=$BRANCH_NAME'
   - '-c'
   - |
-    [[ "$BRANCH_NAME" == "BRANCH" ]] && docker build -t gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm:$BUILD_ID . && docker push gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm || exit 0
+    [[ "$BRANCH_NAME" == "$BRANCH" ]] && docker build -t gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm:$BUILD_ID . && docker push gcr.io/$PROJECT_ID/${_SERVICE_NAME}/scm || exit 0
