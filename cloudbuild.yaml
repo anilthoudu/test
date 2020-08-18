@@ -4,7 +4,7 @@ steps:
   args:
   - '-c'
   - |
-    [[ "$BRANCH_NAME" == "master" ]] && ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod:$BUILD_ID', '.'] && ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod'] || return 0
+    [[ "$BRANCH_NAME" == "master" ]] && ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod:$BUILD_ID', '.'] && ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/prod'] && true
 
 #scm build
 - name: 'gcr.io/cloud-builders/docker'
@@ -12,4 +12,4 @@ steps:
   args:
   - '-c'
   - |
-    [[ "$BRANCH_NAME" == "scm-release" ]] && ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm:$BUILD_ID', '.'] && ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm'] || return 0
+    [[ "$BRANCH_NAME" == "scm-release" ]] && ['build', '-t', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm:$BUILD_ID', '.'] && ['push', 'gcr.io/$PROJECT_ID/${BRANCH_NAME}/scm'] && true
